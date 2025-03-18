@@ -19,5 +19,6 @@
   "homepage": "https://github.com/MarioAlvesQA/teste-ebac-ui#readme",
   "dependencies": {
     "cypress": "^13.6.0"
-  }
+  },
+  "devDependencies": {}
 }
