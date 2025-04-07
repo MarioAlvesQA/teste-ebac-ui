@@ -8,11 +8,11 @@ describe('Feature: Register', () => {
         cy.visit('http://lojaebac.ebaconline.art.br/minha-conta/')
     });
 
-/*
+
     afterEach(() => {
         cy.screenshot()
     })
-*/
+
     it('Should complete register successfully with First and Last Name', () => {
         cy.get('#reg_email').type(faker.internet.email())
         cy.get('#reg_password').type('Teste@123..')
@@ -29,7 +29,7 @@ describe('Feature: Register', () => {
 
     })
 
-    it('Should complete register successfully with First and Last Name - Using variables', () => {
+    it.only('Should complete register successfully with First and Last Name - Using variables', () => {
 
         // Ordem das variaveis influencia na execução do teste, pois o faker gera dados aleatórios.
         // posso usar a variavel femalename dentro do metodo email para criar um e-mail com o nome da pessoa.
