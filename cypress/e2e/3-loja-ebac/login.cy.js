@@ -58,10 +58,4 @@ describe('Funcionalidade: Login', () => {
         cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain', 'Olá, marioteste (não é marioteste? Sair)')
     });
 
-    it('Must do login sucessfully using Fixture cypress.io feature.', () => {
-        cy.fixture('profile').then( data_test => {
-             
-        })
-    });
-
 })
