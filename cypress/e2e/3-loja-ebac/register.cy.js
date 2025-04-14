@@ -5,7 +5,7 @@ import { faker } from '@faker-js/faker';
 describe('Feature: Register', () => {
 
     beforeEach(() => {
-        cy.visit('http://lojaebac.ebaconline.art.br/minha-conta/')
+        cy.visit('minha-conta/') // Visit the login page using baseUrl from cypress.config.js
     });
 
 

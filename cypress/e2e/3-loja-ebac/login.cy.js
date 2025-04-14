@@ -1,10 +1,12 @@
 /// <reference types="cypress"/>
 
+const profile = require('../../fixtures/profile.json') // Importing the profile.json file from fixtures folder to use test data in the test
+
 describe('Funcionalidade: Login', () => {
     // Bloco onde vai o codigo da automacao
 
     beforeEach(() => {
-        cy.visit('http://lojaebac.ebaconline.art.br/minha-conta/')
+        cy.visit('minha-conta/') // Visit the login page using baseUrl from cypress.config.js
         
     });
 
@@ -37,6 +39,29 @@ describe('Funcionalidade: Login', () => {
         cy.get('#password').type('Errada@123..')
         cy.get('.woocommerce-form > .button').click()
         cy.get('.woocommerce-error > li').should('contain', 'Erro: A senha fornecida para o e-mail marioteste@teste.com.br está incorreta. Perdeu a senha?')
+    });
+
+    it('Must do login sucessfully using the file profile.json', () => {
+        // Create a log message on the cypress.io/ui screen to show if the field EMAIL is enabled or disabled
+        cy.get('#username').then(($input) => {
+            if ($input.is('disabled')) {
+                cy.log('The EMAIL field is disabled, so we will not fill it in.')
+            } else {
+                cy.log('The EMAIL field is enabled, so we will fill it in')
+            }
+        });
+
+        // Using the profile.json file to fill EMAIL and PASSWORD fields instead of hardcoding the values in the test
+        cy.get('#username').type(profile.email);
+        cy.get('#password').type(profile.password);
+        cy.get('.woocommerce-form > .button').click();
+        cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain', 'Olá, marioteste (não é marioteste? Sair)')
+    });
+
+    it('Must do login sucessfully using Fixture cypress.io feature.', () => {
+        cy.fixture('profile').then( data_test => {
+             
+        })
     });
 
 })

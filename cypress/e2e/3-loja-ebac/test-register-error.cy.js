@@ -3,7 +3,7 @@
 describe('Feature: Register', () => {
 
     beforeEach(() => {
-        cy.visit('http://lojaebac.ebaconline.art.br/minha-conta/')
+        cy.visit('minha-conta/') // Visit the login homepage using baseUrl from cypress.config.js 
     })
 
     afterEach(() => {
